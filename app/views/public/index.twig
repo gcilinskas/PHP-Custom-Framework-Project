@@ -1,0 +1,62 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+
+    {% include('public/includes/carousel.twig') %}
+
+    <div class="featuresTitle sectionTitle" >
+        <h2>Shop By Category</h2>
+        <hr>
+    </div>
+
+    <div class="featuresBody sectionBody">
+
+        <div class="col-sm-4 category c-car " >
+            <a href="/products?filter=1" class="hiddenClick"></a>
+            <div class="caption">
+                <h4>Car Chargers</h4>
+            </div>
+        </div>
+
+        <div class="col-sm-4 category c-charger">
+            <a href="/products?filter=2" class="hiddenClick"></a>
+            <div class="caption">
+                <h4>Wireless Chargers</h4>
+            </div>
+        </div>
+
+        <div class="col-sm-4 category c-airpod">
+            <a href="/products?filter=3" class="hiddenClick"></a>
+            <div class="caption">
+                <h4>AirPod Chargers</h4>
+            </div>
+        </div>
+
+    </div>
+
+    {% include('public/includes/productsCarousel.twig') %}
+
+    <div class="featuresSection section">
+        <div class="featuresTitle sectionTitle" >
+            <h2>New Arrivals</h2>
+            <hr>
+        </div>
+        <div class="newArrivals sectionBody">
+
+                {% for batch in products | slice(0, 9) | batch(3) %}
+                    <div class="row product-row">
+                        {% for product in batch %}
+                            {% include('public/includes/product.twig') %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+        </div>
+    </div>
+
+    {% include('public/includes/features.twig') %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,233 @@
+{% extends "templates/appAdmin.twig" %}
+
+{% block content %}
+
+
+
+<div class="row justify-content-center ">
+          <h1 class="text-center">Search Products From Aliexpress Api</h1>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- 							FORM							 -->
+<!-- ============================================================= -->
+<div class="row justify-content-center">
+	<form method="POST" action="/admin/import/search" class="col-sm-9 justify-content-center">
+
+        {# parameter freightType default = ePacket #}
+        <input type="hidden" name="freightTypes[]" value="ePacket">
+
+
+        <div class="form-group">
+            <label for="apiCategory">Product Title</label>
+            <input type="text" id="text" class="form-control input-lg {{ errors.text ? 'is-invalid' : '' }}" name="text" placeholder="Search products..." value="{{old.text}}" />
+        </div>
+        
+        {% if errors.text %}
+             <div class="invalid-feedback">
+                {{ errors.text | first }}
+             </div>
+        {% endif %}
+
+        <div class="form-group">
+        <label for="category">Select Category</label>
+            <select id="category" name="category" class="form-control form-control-sm">
+            <option value=''>Any</option>
+
+             {% for apiCategory in apiCategories %}
+                 <option value="{{ apiCategory.getApiId }}">{{ apiCategory.getTitle }}</option>
+             {% endfor %}
+
+            </select>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <label for="price_from">Price From</label>
+                <input type="text" id="price_from" name="price_from" class="form-control" placeholder="0.01" value="{{old.price_from}}">
+                {% if errors.price_from %}
+                    <div class="invalid-feedback">
+                        {{ errors.price_from | first }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col">
+                <label for="price_to">Price To</label>
+                <input type="text" id="price_to" name="price_to" class="form-control" placeholder="0.02" value="{{old.price_to}}">
+                {% if errors.price_to %}
+                    <div class="invalid-feedback">
+                        {{ errors.price_to | first }}
+                    </div>
+                {% endif %}
+            </div>
+             <div class="col">
+                <label for="currency">Currency</label>
+                <select id="currency" name="currency" class="form-control form-control-sm">
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+					<option value="GBP">GBP</option>
+                </select>
+            </div>
+        </div>
+
+
+           
+
+
+        <div class="form-order-ratings">
+            <div class=" col ">
+                <label for="orders_from">Minimum Orders</label>
+                <input type="text" id="orders_from" class="form-control input-lg {{ errors.orders_from ? 'is-invalid' : '' }}" name="orders_from" value="{{old.orders_from}}" />
+
+                {% if errors.orders_from %}
+                    <div class="invalid-feedback">
+                        {{ errors.orders_from | first }}
+                    </div>
+                {% endif %}
+
+            </div>
+          
+
+            <div class=" col">
+                <label for="stars" class="row justify-content-center">Ratings From</label>
+                <div id="stars" class="stars">
+                    <input type="radio" name="ratings_from" value="1" class="star-1" id="star-1" />
+                    <label class="star-1" for="star-1">1</label>
+                    <input type="radio" name="ratings_from" value="2" class="star-2" id="star-2" />
+                    <label class="star-2" for="star-2">2</label>
+                    <input type="radio" name="ratings_from" value="3" class="star-3" id="star-3" />
+                    <label class="star-3" for="star-3">3</label>
+                    <input type="radio" name="ratings_from" value="4" class="star-4" id="star-4" />
+                    <label class="star-4" for="star-4">4</label>
+                    <input type="radio" name="ratings_from" value="5" class="star-5" id="star-5" />
+                    <label class="star-5" for="star-5">5</label>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group-shipping ">
+            <div class="form-control col form-ship ">
+				<select name="ships_to">
+					<option value="LT">Lithuania</option>
+					<option value="LV">Latvia</option>
+					<option value="ES">Estonia</option>
+					<option value="PL">Poland</option>
+                    <option value="US">United States</option>
+				</select>
+				<label class="label-ship" for="ships_to">Ships To Country</label>
+			</div>
+            <div class="form-control col form-ship">
+				<select name="ships_from">
+					<option value="CN">China</option>
+					<option value="US">United States</option>
+					<option value="RF">Russian Federation</option>
+				</select>
+				<label class="label-ship" for="ships_from">Ships From</label>
+			</div>
+        </div>
+
+
+        <div class="form-group-shipping  ">
+            <div class="form-control form-ship col ">
+				<select name="sort_by">
+					<option value="BEST_MATCH">Best Match</option>
+					<option value="PRODUCT_ID">Product ID</option>
+					<option value="WHOLESALE_PRICE">Wholesale Price</option>
+					<option value="ITEM_RATING">Item Rating</option>
+					<option value="Orders">Orders</option>
+				</select>
+				<label class="label-ship" for="sort_by">Sort By</label>
+			</div>
+            <div class="form-control col form-ship">
+				<select name="sortDirection">
+					<option value="ASC">ASC</option>
+					<option value="DESC">DESC</option>
+				</select>
+				<label class="label-ship" for="sortDirection">Sort Direction</label>
+			</div>
+        </div>
+
+        <div class="form-group">
+                <input type="submit" class="btn btn-block btn-lg btn-primary" value="Search"/>
+        </div>
+		
+		
+	</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# 
+    
+<form action="/admin/import/search" method="POST">
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="text-center">Search Products From Aliexpress Api</h1>
+        </div>
+         <div class="modal-body">
+
+            
+
+             <div class="form-group">
+                 <input type="text" class="form-control input-lg {{ errors.title ? 'is-invalid' : '' }}" name="title" placeholder="Title" value="{{old.title}}" />
+             </div>
+
+             {% if errors.title %}
+             <div class="invalid-feedback">
+                {{ errors.title | first }}
+             </div>
+             {% endif %}
+             
+
+             <div class="form-group">
+                <textarea class="form-control input-lg  {{ errors.description ? 'is-invalid' : '' }}" name="description" placeholder="description" value="{{old.description}}"></textarea>
+                 {# <input type="text" class="form-control input-lg  {{ errors.description ? 'is-invalid' : '' }}" name="password" placeholder="Password" value="{{old.password}}" /> #}
+             {# </div>
+
+             {% if errors.description %}
+             <div class="invalid-feedback">
+                {{ errors.description | first }}
+             </div>
+             {% endif %}
+
+             <div class="form-group">
+                 <input type="submit" class="btn btn-block btn-lg btn-primary" value="Add"/>
+             </div>
+         </div>
+    </div>
+ </div>
+
+ </form>  #}
+
+{% endblock %}

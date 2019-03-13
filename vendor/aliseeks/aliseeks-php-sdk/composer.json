@@ -1,0 +1,40 @@
+{
+    "name": "aliseeks/aliseeks-php-sdk",
+    "version": "1.0.3",
+    "description": "AliExpress product searching and product details retrieval API.",
+    "keywords": [
+        "aliexpress",
+        "api",
+        "openapitools",
+        "openapi-generator",
+        "php",
+        "sdk",
+        "rest"
+    ],
+    "homepage": "http://openapi-generator.tech",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "OpenAPI-Generator contributors",
+            "homepage": "https://openapi-generator.tech"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4",
+        "squizlabs/php_codesniffer": "~2.6",
+        "friendsofphp/php-cs-fixer": "~2.12"
+    },
+    "autoload": {
+        "psr-4": { "AliseeksApi\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "AliseeksApi\\" : "test/" }
+    }
+}

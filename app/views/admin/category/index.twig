@@ -1,0 +1,31 @@
+{% extends "templates/appAdmin.twig" %}
+
+{% block content %}
+    
+    <div class="grey-card justify-content-center ">
+
+    <a href="/admin/category/add" class="btn btn-padding full-width">
+       Add Category
+       </a>
+
+    </div>
+    
+   
+ {% for category in categories %}
+
+    <div class="left-padding grey-card justify-content-center ">
+
+    <div class="flexgrow-3">
+        <p>{{ category.getTitle }}</p>
+    </div>
+
+    <div class="flexend">
+    <a href="/admin/category/edit?id={{ category.getId }}" class="btn-info btn-padding btn-shadow">Edit</a>
+        <a href="/admin/category/delete?id={{ category.getId }}" class="btn-danger btn-padding btn-shadow">Delete</a>
+    </div>
+
+    </div>
+
+{% endfor %}
+
+{% endblock %}

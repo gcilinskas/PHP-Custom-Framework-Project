@@ -1,0 +1,73 @@
+{% extends "templates/appAdmin.twig" %}
+
+{% block content %}
+    
+    	
+	<div class="container">
+		<div class="card">
+			<div class="container-fliud details-wrapper">
+
+
+                    <div class="col">
+                        <div class="row">
+                            <div class="col"><img class="img-thumbnail" src="{{product.getImageUrl}}"></div>
+                        </div>
+                        <div class="row">
+                            {% for image in images %}
+                                    <div class="col"><img class="img-thumbnail" src="{{image.getUrl}}"></div>
+                                     {% if loop.index % 3 == 0 %}
+                                        </div><div class="row">
+                                    {% endif %}
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+                    <div class="col">
+                        <div class="content">
+
+                        <h2>{{product.getTitle}}</h2>
+                        <hr>
+                        <p >Retailer price: {{product.getRetailerPrice}} {{product.getCurrency}}</p>
+                        <hr>
+                        {% for attr in attributes %}
+                            <p>{{attr.name}}: <span class="badge badge-warning"> {{attr.value}} </span></p>
+                        {% endfor %}
+                        <hr>
+                        <p>Properties: </p>
+                        {% for property in propertyValues %}
+                            <p>{{property.getPropertyName}}:<span class="badge badge-warning"> {{property.getPropertyValue}} </span></p>
+                        {% endfor %}
+                        <hr>
+                        <p>Variations:
+                         {% for variation in variations %}
+                            <p>Name: <span class="badge badge-warning"> {{variation.getName}} </span>
+                            <span>Price: {{variation.getRetailerPrice}} {{variation.getCurrency}}</span>
+                            <span>Stock: {{variation.getStock}}</span>
+                            </p>
+                         {% endfor %}
+                        </p>
+                        <hr>
+                        <p> Shipping Services
+                        {% for shipping in shippingServices %}
+                        <div class="shippingBox card bg-light">
+                            <p>Company: {{ shipping.getCompany }}</p>
+                            <p>Delivery Time:
+                            <span> From {{ shipping.getDeliveryTimeFrom }} days</span><span> To {{ shipping.getDeliveryTimeTo }} days</span>
+                            </p>
+                            <p>Price: <span>{{shipping.getPrice}}</span><span> {{shipping.getCurrency}}</span> </p>
+                            <p>Ships From: <span>{{shipping.getShipsFrom}}</span></p>
+                            <p>Tracking: <span>{% if shipping.getTracking == true %}Available{% else %}Not Available{% endif %}</span></p>
+                        </div>
+                        {% endfor %}
+                        </p>
+                        <a href="/admin/product/edit?id={{product.getId}}" class="btn btn-success btn-lg btn-block">Edit</a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+	</div>
+ 
+{% endblock %}

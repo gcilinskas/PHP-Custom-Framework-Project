@@ -1,0 +1,1043 @@
+/* [Master Stylesheet 1.0] */
+
+/* ------------- Index of Stylesheet -------------
+:: 1.0 Import Web Fonts
+:: 2.0 Common/Base CSS
+:: 3.0 Section Area CSS
+:: 4.0 Nav bar Area CSS
+:: 5.0 Footer Area CSS
+:: 6.0 Home Page -  Area CSS
+    >> 6.1 Carousel Area CSS
+    >> 6.2 Shop by Category Area CSS
+    >> 6.3 Featured Products Area CSS
+    >> 6.4 New Arrivals Area CSS
+    >> 6.5 Special Features Area CSS
+:: 7.0 Products Page -  Area CSS
+    >> 7.1 Sidebar Area CSS
+    >> 7.2 Product Items Area CSS
+    >> 7.4 Pagination Area CSS
+:: 8.0 Cart Page Area CSS
+:: 9.0 Product Area CSS
+:: 10.0 Details Page Area CSS
+:: 11.0 Login/Register Page Area CSS
+:: 12.0 CustomBtn Area CSS
+:: 13.0 Responsive Area CSS
+
+------------------------------------------------ */
+
+/* --------------------
+:: 1.0 Import Web Fonts
+-------------------- */
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+/* --------------------
+:: 2.0 Common/Base CSS
+-------------------- */
+html,
+body {
+    height: 100%;
+}
+
+*{
+    text-decoration:none;
+    list-style-type:none;
+    box-sizing:border-box;
+    margin:0;
+}
+
+.row{
+    margin-right:0!important;
+}
+
+a:hover {
+    text-decoration:none!important;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-top: 0;
+}
+.invalid-feedback{
+    display:flex!important;
+}
+p{
+    font-family: "Raleway", sans-serif;
+}
+/* --------------------
+:: 3.0 Section Area CSS
+-------------------- */
+.section{
+    max-width:1300px;
+    display: flex;
+    margin:auto;
+    flex-direction: column;
+    margin-bottom:50px;
+}
+
+.sectionBody{
+    display: flex;
+    justify-content: center;
+}
+.sectionTitle{
+    text-align: center;
+    width: 100%;
+    padding: 100px;
+}
+
+.section h2, .sectionTitle h2{
+    color: #222222;
+    font-size:30px;
+}
+
+/* --------------------
+:: 4.0 Nav bar Area
+-------------------- */
+
+.nav{
+    width:100%;
+    display: flex;
+    flex-direction:row;
+    padding:15px;
+    align-items:center;
+    background-color: rgb(247, 247, 247)!important;
+}
+
+.nav-brand {
+    text-decoration: none!important;
+}
+
+.nav-wrapper{
+    max-width:1000px;
+    margin:auto;
+    display: flex;
+    flex-direction:row;
+    width: 100%;
+}
+
+.nav-items{
+    display: flex;
+    flex-direction:row;
+    margin-bottom:0!important;
+}
+
+.nav-left{
+    display: flex;
+    flex-basis:0;
+    flex-grow:1;
+    align-items:center;
+}
+
+.nav-right{
+    display: flex;
+    flex-basis:0;
+    flex-grow:1;
+    align-items:center;
+}
+
+.nav-items li a{
+    color: #666666;
+    font-size: 13px;
+    font-weight: 400;
+    transition-duration: 0.3s;
+}
+
+.nav-items li a:hover{
+    color: #4cbbdb;
+    transition-duration: 0.3s;
+}
+
+/* nav mobile */
+.nav-mobile{
+    width:100%;
+    display: none;
+}
+.navbar{
+    width:100%;
+}
+.navbar-collapse{
+    width:100%;
+}
+
+/* ----------------------
+:: 5.0 Footer Area CSS
+---------------------- */
+
+.footer_area {
+    padding-top:50px;
+    background-color: #222222;
+    color: #fff;
+}
+
+.footer_heading > h6 {
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.footer_content > p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.footer_content > p:first-child {
+    margin-bottom: 30px;
+}
+
+.footer_social_area > a {
+    color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.footer_social_area > a:hover {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+}
+
+.footer_widget_menu a {
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+
+.footer_widget_menu a:hover {
+    color: rgba(255, 255, 255, 1);
+    margin-left: 5px;
+}
+
+.footer_widget_menu a i {
+    padding-right: 5px;
+}
+
+
+.footer_bottom_area {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+}
+
+.copywrite_text {
+    height: 30px;
+}
+
+.copywrite_text > p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin: 0;
+}
+
+.copywrite_text a {
+    color: #fff;
+}
+
+
+/* ----------------------
+:: 6.0 Home Page Area CSS
+---------------------- */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: 6.1 Carousel Area CSS
+<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+.carousel-item,
+.carousel,
+.item,
+.active {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+    background: #000;
+}
+
+.carousel-caption{padding-bottom:80px;}
+
+h2{font-size: 60px;}
+p{padding:10px}
+
+/* Background images are set within the HTML using inline CSS, not here */
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    opacity:0.6;
+}
+
+/**
+ * Button
+ */
+.btn-transparent {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.btn-transparent:hover {
+    background-color: #fff;
+}
+
+.btn-rounded {
+    border-radius: 70px;
+}
+
+.btn-large {
+    padding: 11px 45px;
+    font-size: 18px;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(100px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeImage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.6;
+    }
+}
+
+.fadeFirstImage{
+    animation-name: fadeImage;
+    animation-duration:5s;
+}
+
+.fadeImage{
+    animation-name: fadeImage;
+    animation-duration:1.5s;
+}
+
+.fadeInUp{
+    animation-name: fadeInUp;
+    animation-duration:1.5s;
+}
+
+.fadeInRight {
+    animation-name: fadeInRight;
+    animation-duration:1.5s;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: 6.2 Shop By Category Area CSS
+<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+.category{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height:500px;
+    color:whitesmoke;
+}
+
+.category a{
+    color:white;
+}
+
+.hiddenClick{
+    position: absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+}
+
+.c-car{
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ),url('../../../assets/img/car.jpg');
+    transition: 0.4s;
+    background-position-y:-20px;
+}
+.c-airpod{
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ),url('../../../assets/img/airpod.jpg');
+    transition: 0.4s;
+    background-position-y:-20px;
+}
+
+.c-charger{
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ),url('../../../assets/img/charger.gif');
+    transition: 0.4s;
+    background-position-y:-20px;
+}
+
+.c-car:hover{
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url('../../../assets/img/car.jpg');
+    background-position-x:-40px;
+    background-position-y:-40px;
+    transition: 0.4s;
+}
+.c-airpod:hover{
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url('../../../assets/img/airpod.jpg');
+    background-position-x:-40px;
+    background-position-y:-40px;
+    transition: 0.4s;
+}
+
+.c-charger:hover{
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url('../../../assets/img/charger.gif');
+    background-position-x:-40px;
+    background-position-y:-40px;
+    transition: 0.4s;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: 6.3 Featured Products Area CSS
+<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.blog .carousel-indicators {
+    left: 0;
+    top: auto;
+    bottom: -40px;
+
+}
+
+/* The colour of the indicators */
+.blog .carousel-indicators  li span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 5px 7px;
+    filter: Alpha(Opacity=50);
+    opacity: 0.5;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background: #4cbbdb;
+    box-sizing:border-box;
+    border-bottom:none;
+}
+
+.blog .carousel-indicators .active li span {
+    background-color: #4cbbdb!important;
+}
+
+
+.carousel-featured{
+    background:#F8F8F8!important;
+}
+
+.blog{
+    height:800px;
+    display: flex;
+    align-items:center;
+    background:#F8F8F8;
+}
+
+.blog .featuresTitle{
+    padding:30px;
+}
+
+
+/*responsive*/
+
+.carousel-featured-mobile{
+    display: none;
+}
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: 6.3 New Arrivals Area CSS
+<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.newArrivals{
+    display: flex;
+    flex-direction:column;
+}
+
+.product-card-title{
+    height:145px!important;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: 6.3 Special Features Area CSS
+<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.special_feature_area {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.single_feature_area {
+    position: relative;
+    z-index: 1;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    background-color: #222;
+    padding: 50px 15px;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+
+.single_feature_area:hover {
+    background-color: #19B5FE;
+}
+
+.feature_icon {
+    background-color: #f6f6f6;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    height: 70px;
+    text-align: center;
+    width: 70px;
+    position: relative;
+    z-index: 2;
+    margin-right: 15px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 70px;
+    flex: 0 0 70px;
+}
+
+.feature_icon i {
+    font-size: 36px;
+    line-height: 70px;
+}
+
+.feature_icon > span i {
+    background-color: #19B5FE;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 24px;
+}
+
+.feature_content > h6 {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.feature_content > p {
+    font-size: 12px;
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* ----------------------
+:: 7.0 Products Page Area CSS
+---------------------- */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: 7.1 Sidebar Area CSS
+<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+#sidebar{
+    display: flex;
+    flex-basis:0;
+    flex-grow: 1;
+    flex-direction:column;
+    justify-content: flex-start;
+    padding:30px;
+    background-color: #F7F7F7;
+}
+
+.sidebar-list li a{
+    color:black;
+    transition-duration: 0.3s;
+}
+
+.sidebar-list li a:hover{
+    color:#4cbbdb;
+    transition-duration: 0.3s;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction:row;
+}
+
+/*responsive*/
+.categories-mobile{
+    display:none;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: 7.2 Products Area CSS
+<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.productsSection{
+    padding:40px;
+    display: flex;
+    flex-basis:0;
+    flex-grow: 10;
+    flex-direction:column;
+    justify-content: center;
+}
+
+.productsBody{
+    display: flex;
+    width:100%;
+}
+
+.flex-row{
+    display:flex;
+    flex-direction:row;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: 7.3 Pagination Area CSS
+<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.pagination-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    margin:20px;
+}
+
+/* --------------------
+:: 8.0 Cart Page CSS
+-------------------- */
+
+.cartLine{
+    display: flex;
+    flex-direction:row;
+    margin-bottom:30px;
+}
+
+.cartLineImage{
+    max-height:150px;
+    overflow:hidden;
+    display: flex;
+    flex-basis:0;
+    flex-grow:1;
+}
+.cartLineImage img{
+    max-width:150px;
+}
+
+.cartLineData{
+    background-color: #F7F7F7;
+    display: flex;
+    flex-basis:0;
+    flex-grow:8;
+    flex-direction:column;
+}
+
+/* --------------------
+:: 9.0 Product Area CSS
+-------------------- */
+
+.card ul li, .productCard p{
+    color: #666666;
+    background: #fefefe;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+}
+
+.product-action{
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
+.product{
+    width: 300px;
+    height: 300px;
+    background-size:cover!important;
+    transform: scale(1.1);
+}
+
+/*** Animations ***/
+@keyframes product-image-animation {
+    from{
+        transform: scale(1.1);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+@keyframes darkenImage{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 0.4;
+    }
+}
+
+/** Triggered with jQuery **/
+.product-image-animation{
+    animation-fill-mode: forwards!important;
+    animation:product-image-animation;
+    animation-duration:0.4s;
+}
+
+/** Triggered with jQuery **/
+.darkenImage{
+    animation-fill-mode: forwards!important;
+    animation:darkenImage;
+    animation-duration:0.4s;
+}
+
+.product-image-wrapper{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow:hidden;
+    border-radius: 10px;
+}
+
+.innerDark{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+.hiddenImageClick{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.productCard{
+    position: relative;
+    display: flex;
+    margin:30px;
+    margin-top:0;
+    flex-direction:column;
+    width:300px;
+}
+
+.product-action{
+    opacity:0;
+}
+
+@keyframes pColor{
+    from{
+        color:inherit;
+    }
+    to{
+        color:#4cbbdb;
+    }
+}
+
+.pColorAnimation{
+    animation-fill-mode: forwards!important;
+    animation:pColor;
+    animation-duration:0.4s;
+}
+
+/* --------------------
+:: 10.0 Details Page Area CSS
+-------------------- */
+
+.detailsPage{
+    margin-top:30px;
+}
+
+.detailsInfo h2{
+    color: #222222;
+    font-size:30px;
+}
+
+.detailsImageWrapper{
+    height:150px;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+/*responsive*/
+.details-product-images-mobile{
+    display: none;
+}
+
+/* --------------------
+:: 11.0 Login/Register Page Area CSS
+-------------------- */
+
+
+
+/* --------------------
+:: 12.0 CustomBtn Area CSS
+-------------------- */
+.customBtn{
+    display: inline-block;
+    color: white;
+    background-color: #4cbbdb;
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    text-decoration: none;
+    border-radius: 5px;
+    vertical-align: middle;
+    margin: 3px;
+}
+
+.customBtn i{
+    font-size:12px;
+}
+
+.detailsBn {
+    transition:0.3s;
+    background-color:#4cbbdb;
+}
+.cartBtn{
+    transition:0.3s;
+    background-color: #F7F7F7;
+}
+.cartBtn i{
+    color:#4cbbdb;
+}
+.detailsBtn i{
+    color:white;
+}
+
+.cartBtn:hover{
+    transition:0.3s;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.detailsBtn:hover{
+    transition:0.3s;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+@keyframes hideBtn {
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+.btnAnimation{
+    animation-fill-mode: forwards;
+    animation-name:hideBtn;
+    animation-duration:0.4s;
+}
+
+
+
+
+
+/* --------------------
+:: 13.0 Responsive Area CSS
+-------------------- */
+
+@media only screen and (max-width: 1740px) {
+    /* for featured products carousel in home page */
+    .carousel-featured .row {
+        display: flex!important;
+        flex-wrap:nowrap;
+        flex-direction:row!important;
+        justify-content: center!important;
+    }
+
+}
+
+@media only screen and (max-width: 1150px) {
+    .product-row {
+        display: flex!important;
+        flex-direction:column!important;
+        justify-content: center!important;
+    }
+    .product-col{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: auto;
+    }
+    .special_feature_area{
+        display: flex;
+        flex-direction:column;
+    }
+
+    .single_feature_area{
+        min-width:100%;
+    }
+
+}
+
+@media only screen and (max-width:1500px) {
+    /* for products row in products page */
+    .flex-row{
+        display: block;
+        text-align: center;
+        margin: auto;
+    }
+
+}
+
+
+@media only screen and (max-width:1000px) {
+    /*nav*/
+    .navbar-collapse ul li:hover{
+        background-color: rgba(76, 187, 219,0.6);
+        transition:0.3s;
+    }
+
+    .mobile-brand{
+        position: absolute;
+        right:0;
+        top:15px;
+        display: flex!important;
+        align-items: center!important;
+        color: #666666;
+        font-size: 13px;
+        font-weight: 400;
+        transition-duration: 0.3s;
+    }
+
+    .navbar-toggler{
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-bottom:20px;
+    }
+
+    .nav, .navbar{
+        padding:0;
+    }
+    .navbar-collapse ul li a{
+        transition:0.3s;
+        margin-left:20px;
+    }
+
+    .hamburger{
+        font-size: 15px;
+        color: #666666!important;
+    }
+    .nav-wrapper{
+        display: none;
+    }
+    .nav{
+        height:auto;
+    }
+    .nav-mobile{
+        transition:0.3s;
+        display: flex;
+    }
+
+    /*sidebar*/
+    #sidebar{
+        display: none;
+    }
+
+    .caregories-mobile{
+        display: flex;
+        justify-content: center;
+        flex-direction:column;
+    }
+    .mobile-sidebar-list{
+        margin-left:20px;
+        margin-right:20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mobile-sidebar-list li{
+        width:100%;
+        display: flex;
+        align-items:center;
+        flex-basis:0;
+        flex-grow:1;
+        text-align: center;
+    }
+
+    .mobile-sidebar-list li a{
+        width:100%;
+    }
+
+    .mobile-sidebar-header{
+        margin-top:20px;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    /*products page padding*/
+    .productsSection{
+        padding:0;
+    }
+
+    /*home page shop by category*/
+    .category{
+        height:300px;
+        padding:0;
+    }
+
+    /*featured products in home page*/
+    .carousel-featured{
+        display: none;
+    }
+
+    .carousel-featured-mobile{
+        display: flex;
+    }
+
+    #myCarousel .carousel-inner{
+        background:none!important;
+    }
+
+
+    .carousel-featured-mobile {
+        max-width: 400px!important;
+    }
+
+
+    /* Product Card */
+    .productCard{
+        max-width:250px!important;
+    }
+    .product-image-wrapper{
+        max-width:250px!important;
+    }
+
+    .product{
+        width:250px!important;
+    }
+
+
+    /** details page **/
+    .detailsPage h2{
+        font-size:20px;
+    }
+
+    .details-product-images{
+        display: none;
+    }
+    .details-product-images-mobile{
+        display: flex;
+    }
+
+}
+
+
+
+

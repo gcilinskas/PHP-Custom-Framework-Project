@@ -1,0 +1,18 @@
+<div class="col-4 product-col">
+
+    <div class="productCard">
+        <div class="product-image-wrapper">
+        <div class="product" style="background:url('{{ product.getImageUrl }}');"><a href="/product/details?id={{product.getId}}" class="hiddenImageClick"><div class="innerDark"></div></a></div>
+            <div class="product-action">
+                <a href="/cart/store?id={{product.getId}}" class="customBtn cartBtn "><i class="fas fa-shopping-cart"></i></a>
+                <a href="/product/details?id={{product.getId}}" class="customBtn detailsBtn "><i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+
+        <p class="product-title">{{ product.getTitle }}</p>
+
+
+    </div>
+
+
+</div>

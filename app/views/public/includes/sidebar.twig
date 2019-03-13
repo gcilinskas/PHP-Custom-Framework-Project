@@ -1,0 +1,18 @@
+
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>Categories</h3>
+    </div>
+    <hr>
+    <ul class="list-unstyled components sidebar-list">
+        <li>
+            <a href="/products?filter=all">All</a>
+        </li>
+        {% for category in categories %}
+            <li>
+                <a href="/products?filter={{ category.getId }}">{{ category.getTitle }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+

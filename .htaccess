@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /Projects/alistore/
+RewriteCond $1 !^(assets)
+RewriteRule ^(.+)$ index.php [QSA,L]

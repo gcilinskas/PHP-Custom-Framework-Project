@@ -1,0 +1,101 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+
+
+    <div class="container detailsPage">
+        <div class="card">
+            <div class="container-fliud">
+
+                <div class="row">
+
+                    <div class="col-6 details-product-images">
+                        <div class="row">
+                            <div class="col"><img class="img-thumbnail" src="{{product.getImageUrl}}"></div>
+                        </div>
+                        <div class="row">
+                            {% for image in images %}
+                            <div class="col-4 detailsImageWrapper"><img class="img-thumbnail" src="{{image.getUrl}}"></div>
+                            {% if loop.index % 3 == 0 %}
+                        </div><div class="row">
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-6 details-product-images-mobile">
+                        <div class="row">
+                            <div class="col"><img class="img-thumbnail" src="{{product.getImageUrl}}"></div>
+                        </div>
+                        <div class="row">
+                            {% for image in images %}
+                            <div class="col-12 detailsImageWrapper"><img class="img-thumbnail" src="{{image.getUrl}}"></div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="detailsInfo">
+
+                            <h2>{{product.getTitle}}</h2>
+                            <hr>
+                            <p>Price: {{product.getPrice}} {{product.getCurrency}}</p>
+                            <hr>
+
+                            {% if attributes|length > 2 %}
+                                <div class="form-group">
+                                    <label for="attribute">Select Attribute:</label>
+                                    <select class="form-control" id="attribute">
+                                        {% for attribute in attributes %}
+                                            <option value="{{ attribute.getId }}">{{ attribute.getName }} | {{ attribute.getValue }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <hr>
+                            {% endif %}
+
+                            {% if properties|length > 2 %}
+                                <div class="form-group">
+                                    <label for="property">Select Property:</label>
+                                    <select class="form-control" id="property">
+                                        {% for property in properties %}
+                                            <option value="{{ property.getId }}">{{ property.getPropertyName }} | {{ property.getPropertyValue }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <hr>
+                            {% endif %}
+
+
+                            {% if variations|length > 2 %}
+                                <div class="form-group">
+                                    <label for="variation">Select Variation:</label>
+                                    <select class="form-control" id="variation">
+                                        {% for variation in variations %}
+                                            <option value="{{ variation.getId }}">{{ variation.getName }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <hr>
+                            {% endif %}
+
+                            <div class="form-group">
+                                <label for="shipping">Select Shipping:</label>
+                                <select class="form-control" id="shipping">
+                                    {% for shipping in shippingServices %}
+                                        <option value="{{ shipping.getId }}">{{ shipping.getCompany }} | {{ shipping.getPrice }} {{ shipping.getCurrency }} |
+                                        {{ shipping.getDeliveryTimeFrom }} - {{ shipping.getDeliveryTimeTo }} Days
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        <a href="/cart/store?id={{product.getId}}" class="btn btn-success btn-lg btn-block">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

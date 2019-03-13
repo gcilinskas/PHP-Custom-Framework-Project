@@ -1,0 +1,57 @@
+{
+    "name": "northwoods/broker",
+    "description": "Dead simple PSR-15 middleware dispatcher",
+    "keywords": [
+        "http",
+        "middleware",
+        "server",
+        "dispatch",
+        "dispatcher",
+        "psr-15",
+        "psr15"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Woody Gilk",
+            "email": "woody.gilk@gmail.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1",
+        "psr/http-server-middleware": "^1.0"
+    },
+    "require-dev": {
+        "eloquent/phony-phpunit": "^4.0",
+        "eloquent/phpstan-phony": "^0.3.0",
+        "phpstan/phpstan": "^0.10.3",
+        "phpstan/phpstan-phpunit": "^0.10.0",
+        "phpunit/phpunit": "^7.3",
+        "squizlabs/php_codesniffer": "^3.3"
+    },
+    "suggest": {
+        "northwoods/conditional-middleware": "Execute middleware based on request conditions",
+        "northwoods/lazy-middleware": "Lazy load middleware from a container"
+    },
+    "autoload": {
+        "psr-4": {
+            "Northwoods\\Broker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Northwoods\\Broker\\": "tests/"
+        }
+    },
+    "scripts": {
+        "analyze": "phpstan analyse -l max -c phpstan.neon src --no-progress",
+        "check": "phpcs -n",
+        "test": "phpunit --testdox",
+        "ci": ["@analyze", "@check", "@test"]
+    }
+}

@@ -1,0 +1,59 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+<div class="wrapper">
+    {% include('public/includes/sidebar.twig') %}
+        <div class="productsSection">
+
+            <div class="categories-mobile">
+                <div class="mobile-sidebar-header">
+                    <h3>Categories</h3>
+                </div>
+                <hr>
+                <ul class="list-unstyled components mobile-sidebar-list">
+                    <li>
+                        <a href="/products?filter=all">All</a>
+                    </li>
+                    {% for category in categories %}
+                        <li>
+                            <a href="/products?filter={{ category.getId }}">{{ category.getTitle }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% set limitResult = 9 %}
+
+            {% set firstInProducts =  (page - 1) * limitResult %}
+            {% set lastInProducts = page * limitResult %}
+
+            {% set productStart = firstInProducts %}
+            {% set productEnd = lastInProducts %}
+
+
+            {% for batch in products | slice(productStart,productEnd) | batch(3) %}
+                <div class="flex-row">
+                    {% for product in batch %}
+                        <div class="product-col-products">
+                            {% include('public/includes/product.twig') %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <div class="row pagination-wrapper">
+                {% set pagination = products|length / limitResult %}
+                {% if pagination > 1 %}
+                    <a href="/products?filter={{ filter }}&page=1" class="btn btn-dark">First Page</a>
+                    {% for pages in 0..pagination %}
+                        <a href="/products?filter={{ filter }}&page={{ loop.index }}" class="btn btn-dark ">{{ loop.index }}</a>
+                    {% endfor %}
+                    <a href="/products?filter={{ filter }}&page={{ pagination|round(0, 'ceil') }}" class="btn btn-dark">Last Page</a>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+</div>
+{% endblock %}

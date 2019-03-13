@@ -1,0 +1,44 @@
+{% extends "templates/appAdmin.twig" %}
+
+{% block content %}
+    
+<form action="/admin/category/store" method="POST">
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="text-center">Add Category</h1>
+        </div>
+         <div class="modal-body">
+             <div class="form-group">
+                 <input type="text" class="form-control input-lg {{ errors.title ? 'is-invalid' : '' }}" name="title" placeholder="Title" value="{{old.title}}" />
+             </div>
+
+             {% if errors.title %}
+             <div class="invalid-feedback">
+                {{ errors.title | first }}
+             </div>
+             {% endif %}
+             
+
+             <div class="form-group">
+                <textarea class="form-control input-lg  {{ errors.description ? 'is-invalid' : '' }}" name="description" placeholder="description" value="{{old.description}}"></textarea>
+                 {# <input type="text" class="form-control input-lg  {{ errors.description ? 'is-invalid' : '' }}" name="password" placeholder="Password" value="{{old.password}}" /> #}
+             </div>
+
+             {% if errors.description %}
+             <div class="invalid-feedback">
+                {{ errors.description | first }}
+             </div>
+             {% endif %}
+
+             <div class="form-group">
+                 <input type="submit" class="btn btn-block btn-lg btn-primary" value="Add"/>
+             </div>
+         </div>
+    </div>
+ </div>
+
+ </form>
+
+{% endblock %}

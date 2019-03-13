@@ -1,0 +1,47 @@
+{% extends "templates/appAdmin.twig" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    {% if products is empty %}
+    <div class="row col-12 justify-content-center">
+        <h3>No products found :(</h3>
+    </div>
+    <div class="row col-12 justify-content-center">
+        <a href="/admin/import" class="btn btn-primary">Search new products to import</a>
+    </div>
+    {% endif %}
+
+    {% for product in products %}
+    <div class="products-wrapper">
+        <div class="col-3">
+                
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{product.getImageUrl}}" alt="Product Image">
+                <div class="card-body">
+                    <p class="card-title">{{product.getTitle}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Price: {{product.getRetailerPrice}} {{ product.getCurrency}} </li>
+                    <li class="list-group-item"><a href="{{product.getDetailUrl}}">Visit Product Page</a></li>
+                </ul>
+                <div class="card-body">
+                        <a href="/admin/importList/details?id={{product.getId}}" class="card-link btn btn-info">View Details</a>
+                        <a href="/admin/importList/publish?id={{product.getId}}" class="card-link btn btn-success">Publish</a>  
+                        <hr>    
+                        <a href="/admin/importList/delete?id={{product.getId}}" class="card-link btn btn-danger">Delete</a>
+                </div>
+            </div>
+                
+        </div>
+
+        {% if loop.index % 4 == 0 %}
+            </div><div class="row">
+        {% endif %}
+        </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

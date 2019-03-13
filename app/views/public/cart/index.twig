@@ -1,0 +1,26 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="sectionTitle">
+        <h2>Your Cart Data</h2>
+    </div>
+
+    {% for line in cartLines %}
+        <div class="row cartLine">
+            <div class="cartLineImage">
+                <img src="{{ line.product.getImageUrl }}" alt="Cart Product Image">
+            </div>
+            <div class="cartLineData">
+                <p>{{ line.product.getTitle }}</p>
+                <p>Price: {{ line.product.getPrice }} {{ line.product.getCurrency }}</p>
+            </div>
+        </div>
+      
+    {% endfor %}
+
+ </div>
+
+{% endblock %}

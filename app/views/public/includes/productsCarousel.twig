@@ -1,0 +1,93 @@
+<div class="row blog featuredProducts">
+    <div class="featuresTitle sectionTitle" >
+        <h2>Featured Products</h2>
+        <hr>
+    </div>
+    <div class="col-md-12">
+        <div id="blogCarousel" class="carousel slide" data-ride="carousel"  data-interval="2000">
+
+            <ol class="carousel-indicators carousel-featured">
+                <li data-target="#blogCarousel" data-slide-to="0" class="active"><span></span></li>
+                <li data-target="#blogCarousel" data-slide-to="1"><span></span></li>
+            </ol>
+
+            <div class="carousel-inner carousel-featured">
+                {% for batch in products |slice(8, 16) | batch(4) %}
+
+                <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+
+                    <div class="row">
+                        {% for product in batch %}
+
+                        <div class="col">
+                            <div class="productCard">
+                                <div class="product-image-wrapper">
+                                    <div class="product" style="background:url('{{ product.getImageUrl }}');"><a href="/product/details?id={{product.getId}}" class="hiddenImageClick"><div class="innerDark"></div></a></div>
+                                    <div class="product-action">
+                                        <a href="/cart/store?id={{product.getId}}" class="customBtn cartBtn "><i class="fas fa-shopping-cart"></i></a>
+                                        <a href="/product/details?id={{product.getId}}" class="customBtn detailsBtn "><i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                                <p class="product-title">{{ product.getTitle }}</p>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                    <!--.row-->
+                </div>
+                <!--.item-->
+                {% endfor %}
+
+                <!--.item-->
+
+            </div>
+            <!--.carousel-inner-->
+        </div>
+        <!--.Carousel-->
+
+       <!-- Mobile Carousel -->
+        <div class="container carousel-featured-mobile">
+
+            <div class='row'>
+                <div class=''>
+
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+
+
+                            {% for product in products | slice(8,16)  %}
+
+
+                            <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+                                <div class="col">
+                                    <div class="productCard">
+                                        <div class="product-image-wrapper">
+                                            <div class="product" style="background:url('{{ product.getImageUrl }}');"><a href="/product/details?id={{product.getId}}" class="hiddenImageClick"><div class="innerDark"></div></a></div>
+                                            <div class="product-action">
+                                                <a href="/cart/store?id={{product.getId}}" class="customBtn cartBtn "><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="/product/details?id={{product.getId}}" class="customBtn detailsBtn "><i class="fas fa-external-link-alt"></i></a>
+                                            </div>
+                                        </div>
+                                        <p class="product-title">{{ product.getTitle }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+
+                        </div> <!-- .carousel-inner -->
+                    </div>  <!-- #my-carousel -->
+                </div>
+            </div>
+        </div>
+
+    <!-- Mobile Carousel -->
+
+
+
+    </div>
+</div>
+
+
+

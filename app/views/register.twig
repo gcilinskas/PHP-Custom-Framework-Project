@@ -1,0 +1,54 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+<form action="/register" method="POST">
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="text-center">Register</h1>
+        </div>
+         <div class="modal-body">
+         <div class="row is-invalid">
+         <p class="">{{errors.database}}</p>
+         </div>
+             <div class="form-group">
+                 <input type="text" class="form-control input-lg {{ errors.email ? 'is-invalid' : '' }}" name="email" placeholder="Email" value="{{old.email}}" />
+             </div>
+
+             {% if errors.email %}
+             <div class="invalid-feedback">
+                {{ errors.email | first }}
+             </div>
+             {% endif %}
+
+             <div class="form-group">
+                 <input type="password" class="form-control input-lg  {{ errors.password ? 'is-invalid' : '' }}" name="password" placeholder="Password" value="{{old.password}}" />
+             </div>
+
+             {% if errors.password %}
+             <div class="invalid-feedback">
+                {{ errors.password | first }}
+             </div>
+             {% endif %}
+
+             <div class="form-group">
+                 <input type="password" class="form-control input-lg  {{ errors.confirmPassword ? 'is-invalid' : '' }}" name="confirmPassword" placeholder="confirmPassword" value="{{old.confirmPassword}}" />
+             </div>
+
+             {% if errors.confirmPassword %}
+             <div class="invalid-feedback">
+                {{ errors.confirmPassword | first }}
+             </div>
+             {% endif %}
+
+             <div class="form-group">
+                 <input type="submit" class="btn btn-block btn-lg btn-primary" value="Register"/>
+             </div>
+         </div>
+    </div>
+ </div>
+
+ </form>
+
+{% endblock %}

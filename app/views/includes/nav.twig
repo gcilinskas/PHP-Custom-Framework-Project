@@ -1,0 +1,107 @@
+<nav class="nav">
+    <div class="nav-wrapper">
+
+        <div class="nav-left">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fas fa-store"></i>Alistore</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <ul class="nav-items">
+            <li class="nav-item menu-dropdown">
+                <a class="nav-link" href="/products">Products</a>
+            </li>
+            {% if getSessionObject('user')[0] is defined %}
+            {% set user = getSessionObject('user')[0] %}
+            {% endif %}
+            {% if user is not defined %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            {% endif %}
+            {% if user.isAdmin == true %}
+
+            <li class="nav-item">
+                    <a class="nav-link" href="/admin">Admin Dashboard</a>
+            </li>
+
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">{% if user is defined %} {{ user.email }} {% endif %}</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="nav-mobile">
+        <nav class="navbar navbar-light light-blue lighten-4">
+        <!-- Collapse button -->
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+                        class="fas fa-bars fa-1x hamburger"></i></span></button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item menu-dropdown">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item menu-dropdown">
+                    <a class="nav-link" href="/products">Products</a>
+                </li>
+                {% if getSessionObject('user')[0] is defined %}
+                    {% set user = getSessionObject('user')[0] %}
+                {% endif %}
+                {% if user is not defined %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                {% endif %}
+                {% if user.isAdmin == true %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin Dashboard</a>
+                    </li>
+
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{% if user is defined %} {{ user.email }} {% endif %}</a>
+                </li>
+            </ul>
+            <!-- Links -->
+
+        </div>
+        <!-- Collapsible content -->
+
+        </nav>
+        <a class="nav-link mobile-brand" href="/"><i class="fas fa-store"></i>Alistore</a>
+    </div>
+
+
+</nav>
+

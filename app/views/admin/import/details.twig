@@ -1,0 +1,69 @@
+{% extends "templates/appAdmin.twig" %}
+
+{% block content %}
+    
+    	
+	<div class="container">
+		<div class="card">
+			<div class="container-fliud details-wrapper">
+
+                    <div class="col">
+                        <div class="row">
+                            <div class="col"><img class="img-thumbnail" src="{{result.productImages | first}}"></div>
+                        </div>
+                        <div class="row">
+                            {% for image in result.productImages %}
+                                    <div class="col"><img class="img-thumbnail" src="{{image}}"></div>
+                                     {% if loop.index % 3 == 0 %}
+                                        </div><div class="row">
+                                    {% endif %}
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+                    <div class="col">
+
+                        <h2>{{result.title}}</h2>
+                        <hr>
+                        <div class="rating">
+                            {% for i in 1..5 %}
+                            {% set starClass = (result.reviews.ratings >= i ? "fas fa-star starSet" : "far fa-star")  %}
+                                <i class="{{ starClass }}"></i>
+                            {% endfor %}
+                        </div>
+                        <p >{{result.reviews.positiveCount}} Postitive reviews</p> 
+                        <p >{{result.reviews.negativeCount}} Negative reviews</p>
+                        <hr>
+                        <p >{{result.wishListCount}} in WhishList </p>
+                        <hr>
+                        <p >Sold: {{result.trade.sold}} units</p>
+                        <hr>
+                        <p >current price: {{result.prices | first.max_amount_per_piece.value}} {{result.prices | first.max_amount_per_piece.currency}}</p>
+                        <hr>
+                        {% for attr in result.attributes %}
+                            <p><b>{{attr.name}}:</b> <span> {{attr.value}} </span> </p>
+                        {% endfor %}
+                        <hr>
+                        <p>Properties: </p>
+                        {% for sku in result.skuProperties %}
+                            <p><b>{{sku.propertyName}}:</b>
+                                {% for value in sku.values %}
+                                    <span class="" >{{value.propertyValueDisplayName}}</span>
+                                {% endfor %}
+                            </p>
+
+                        {% endfor %}
+                        <hr>
+                        <a href="/admin/import/store?id={{result.id}}" class="btn btn-success btn-lg btn-block">Import</a>
+
+
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+	</div>
+ 
+{% endblock %}

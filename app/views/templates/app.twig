@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css"  >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+
+{% include('includes/nav.twig') %}
+{% block content %}{% endblock %}
+{% include('public/includes/footer.twig') %}
+
+<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+<script src="https://rawgit.com/tuupola/jquery_lazyload/2.x/lazyload.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script>
+    $( document ).ready(function() {
+        $('#myCarousel').carousel();
+    });
+    $('#myCarousel').carousel({
+        interval: 3000
+    });
+    window.sr = ScrollReveal({ reset: true });
+    sr.reveal('.company-stuff', { duration: 700 });
+
+
+    $(function(){
+        $('.productCard').hover(function() {
+            $(this).find( '.product-action' ).addClass("btnAnimation");
+            $(this).find( '.product' ).addClass("product-image-animation");
+            $(this).find( '.product-title' ).addClass('pColorAnimation');
+            $(this).find( '.innerDark' ).addClass('darkenImage');
+
+        }, function() {
+            $(this).find( '.product-action' ).removeClass("btnAnimation");
+            $(this).find( '.product' ).removeClass("product-image-animation");
+            $(this).find( '.product-title' ).removeClass('pColorAnimation');
+            $(this).find( '.innerDark' ).removeClass('darkenImage');
+
+        });
+
+    });
+
+</script>
+</body>
+</html>
